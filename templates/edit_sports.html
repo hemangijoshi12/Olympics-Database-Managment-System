@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+    <style>  
+        body  {  
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Olympic_rings_without_rims.svg/1200px-Olympic_rings_without_rims.svg.png"); 
+            background-color: black;
+            height: 700px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }  
+    </style>  
+    <title> Olympics Information</title>
+</head>
+
+<body>
+<left>
+    <a href="/">
+        <button>Homepage</button>
+    </a>
+</left>
+
+<left>
+    <a href="/show_sports">
+        <button>Sports_Database</button>
+    </a>
+</left>
+
+<left>
+    <a href="/insert_sports">
+        <button>Insert_sports</button>
+    </a>
+</left>
+
+    <center>
+        <h1 style="color:white;"> Edit sports records </h1>
+    </hr>
+    
+        <form method="POST" action="/edit_sports">
+          
+        <table border="1" bgcolor="lightgreen">
+
+
+            <tr>
+                <td>player_id</td>
+                <td><input type="number" name="player_id" placeholder="player_id"></td>
+            </tr>
+
+            <tr>
+                <td>sports_name</td>
+                <td><input type="text" name="sports_name" placeholder="sports_name" ></td>
+            </tr>
+
+            <tr>
+                <td>location</td>
+                <td><input type="text" name="location" placeholder="location" ></td>
+            </tr>
+
+            <tr>
+                <td>year</td>
+                <td><input type="number" name="year" placeholder="year" ></td>
+            </tr>
+
+
+            <tr>
+                <td><input type="submit" value="edit_Record"></td>
+                <td>
+                    {% if rows %}
+                    {% for row in rows %}
+                    <b style="color: red;">{{row}}</b>
+                    {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+        </form>
+    </center>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+    <style>  
+        body  {  
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Olympic_rings_without_rims.svg/1200px-Olympic_rings_without_rims.svg.png"); 
+            background-color: black;
+            height: 700px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }  
+    </style>  
+    <title> Olympics Information</title>
+</head>
+
+<body>
+<left>
+    <a href="/">
+        <button>Homepage</button>
+    </a>
+</left>
+
+<left>
+    <a href="/show_player">
+        <button>Player_Database</button>
+    </a>
+</left>
+
+<left>
+    <a href="/insert_player">
+        <button>Insert_player</button>
+    </a>
+</left>
+
+    <center>
+        <h1 style="color:white;"> Delete Player Record </h1>
+    </hr>
+
+        <form method="POST" action="/delete_player">
+            
+        
+            <table border="1" bgcolor="lightgreen">
+                <tr>
+                    <td>player_id</td>
+                    <td><input type="number" name="player_id" placeholder="player_id"></td>
+                </tr>
+    
+                <tr>
+                    <td>first_name</td>
+                    <td><input type="text" name="first_name" placeholder="first_name" ></td>
+                </tr>
+    
+                <tr>
+                    <td>last_name</td>
+                    <td><input type="text" name="last_name" placeholder="last_name" ></td>
+                </tr>
+    
+                <tr>
+                    <td>gender</td>
+                    <td><input type="text" name="gender" placeholder="gender" ></td>
+                </tr>
+    
+                <tr>
+                    <td>height</td>
+                    <td><input type="number" name="height" placeholder="height" ></td>
+                </tr>
+    
+                <tr>
+                    <td>weight</td>
+                    <td><input type="number" name="weight" placeholder="weight" ></td>
+                </tr>
+    
+                <tr>
+                    <td>dob</td>
+                    <td><input type="date" name="dob" placeholder="dob" ></td>
+                </tr>
+    
+    
+       
+
+            <tr>
+                <td><input type="submit" value="Delete_Record"></td>
+                <td>
+                    {% if rows %}
+                    {% for row in rows %}
+                    <b style="color: red;">{{row}}</b>
+                    {% endfor %}
+                    {% endif %}
+                </td>   
+            </tr>
+        </table>
+        </form>
+    </center>
+</body>
+</html>
+
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+    <style>  
+        body  {  
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Olympic_rings_without_rims.svg/1200px-Olympic_rings_without_rims.svg.png");  
+            background-color: black;
+            height: 700px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }  
+    </style>  
+    <title>Olympics Information</title>
+</head>
+
+<body>
+    <left>
+        <a href="/">
+            <button>Homepage</button>
+        </a>
+    </left>
+    
+    <left>
+        <a href="/'show_player'}">
+            <button>Player Database </button>
+        </a>
+    </left>
+
+    <center>
+        <h1 style="color:white;"> Insert Player Information </h1>
+        <hr/>
+        <form method="POST">
+        <table border="1" bgcolor="lightgreen">
+            <tr>
+                <td>player_id</td>
+                <td><input type="number" name="player_id" value="player_id" ></td>
+            </tr>
+
+            <tr>
+                <td>first_name</td>
+                <td><input type="text" name="first_name" value="first_name" ></td>
+            </tr>
+            
+                        
+            <tr>
+                <td>last_name</td>
+                <td><input type="text" name="last_name" value="last_name" ></td>
+            </tr>
+
+            <tr>
+                <td>gender</td>
+                <td><input type="text" name="gender" value="gender"></td>
+            </tr>
+            <tr>
+                <td>height</td>
+                <td><input type="number" name="height" value="height"></td>
+            </tr>
+            <tr>
+                <td>weight</td>
+                <td><input type="number" name="weight" value="weight"></td>
+            </tr>
+            <tr>
+                <td>dob</td>
+                <td><input type="date" name="Year" value="year"></td>
+            </tr>
+
+            <tr>
+                <td> <input type="submit" value="Insert"/> </td> 
+                <td>
+                    {% if rows %}
+                    {% for row in rows %}
+                    <b style="color: red;">{{row}}</b>
+                    {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+        </form>
+    </center>
+</body>
+</html>
