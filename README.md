@@ -85,7 +85,7 @@ ORDER BY height;
 | HTML       | Frontend templates        |
 | Jinja2     | Dynamic HTML rendering    |
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 Olympics-Database-Managment-System/
@@ -109,7 +109,7 @@ Olympics-Database-Managment-System/
 └── README.md
 ```
 
-## 🗄️ Database Structure
+## Database Structure
 
 The Flask application interacts with the following PostgreSQL tables:
 
@@ -136,7 +136,7 @@ The Flask application interacts with the following PostgreSQL tables:
 
 The application accesses these tables using the PostgreSQL schema `olympics_db`.
 
-## ⚙️ Setup and Installation
+## Setup and Installation
 
 ### 1. Clone the repository
 
@@ -196,7 +196,7 @@ Open the application in your browser at:
 http://127.0.0.1:5000/
 ```
 
-## 🌐 Application Routes
+## Application Routes
 
 | Route             | Function                          |
 | ----------------- | --------------------------------- |
@@ -212,7 +212,7 @@ http://127.0.0.1:5000/
 | `/runquerysports` | Query sports after 2000           |
 | `/runqueryplayer` | Display players ordered by height |
 
-## 🔄 CRUD Operations
+## CRUD Operations
 
 The system demonstrates the four fundamental database operations:
 
