@@ -1,64 +1,81 @@
-# Olympics-Database-Managment-System
-
 # Olympics Database Management System
 
-A web-based **Olympics Database Management System** built with **Python Flask** and **PostgreSQL**. The application provides a simple interface for managing Olympic player and sports information through CRUD operations and running predefined SQL queries.
+A Flask-based **Olympics Database Management System** that integrates a web interface with a PostgreSQL database to manage Olympic player and sports records. The application provides CRUD functionality and allows users to execute predefined SQL queries through a simple web interface.
 
 ## Overview
 
-This project demonstrates how a relational database can be integrated with a web application to store, retrieve, update, and delete Olympic-related data.
+The project is built using **Python Flask** for the backend and **PostgreSQL** for data storage. Users can manage player and sports information through HTML forms and view database records directly from the application.
 
-The application connects to a PostgreSQL database named `olympics_db` and provides functionality for managing:
+The system supports:
 
-* Player information
-* Sports information
-* Database records through CRUD operations
-* Predefined SQL queries and sorted results
+* Managing Olympic player records
+* Managing sports participation records
+* Creating, viewing, updating, and deleting data
+* Executing predefined SQL queries
+* Displaying query results through web pages
+
+## Tech Stack
+
+* **Python**
+* **Flask**
+* **PostgreSQL**
+* **Psycopg2**
+* **HTML / Jinja2**
+
+The backend uses `psycopg2` to connect Flask to a PostgreSQL database named `olympics_db`.
 
 ## Features
 
 ### Player Management
 
-The application supports:
+The application provides complete CRUD operations for player records.
 
-* Add a new player
-* View all players
-* Update player details
-* Delete player records
-* View players ordered by height
-
-Player attributes include:
+Player information includes:
 
 * Player ID
-* First name
-* Last name
+* First Name
+* Last Name
 * Gender
 * Height
 * Weight
-* Date of birth
+* Date of Birth
+
+Supported operations:
+
+* Add a player
+* View all players
+* Edit player information
+* Delete a player
+
+These operations are implemented through Flask routes connected to the PostgreSQL `player` table.
 
 ### Sports Management
 
-The application supports:
+Sports participation records can also be managed through the application.
 
-* Add sports participation information
-* View sports records
-* Update sports records
-* Delete sports records
-* Query sports records for events after the year 2000
-
-Sports records include:
+Each record contains:
 
 * Player ID
-* Sports name
+* Sports Name
 * Location
 * Year
 
-### Database Queries
+Supported operations:
 
-The application includes predefined query pages for:
+* Add a sports record
+* View sports records
+* Edit sports information
+* Delete sports records
 
-**Sports after 2000**
+The application stores these records in the PostgreSQL `sports` table.
+
+## SQL Queries
+
+The project includes two predefined database queries.
+
+### Sports After 2000
+
+Retrieves sports records where the participation year is greater than 2000.
 
 ```sql
 SELECT sports_name, player_id, year, location
@@ -66,7 +83,9 @@ FROM olympics_db.sports
 WHERE year > 2000;
 ```
 
-**Players ordered by height**
+### Players Ordered by Height
+
+Retrieves player information and sorts the results by height.
 
 ```sql
 SELECT player_id, first_name, last_name, gender, height, weight
@@ -74,16 +93,25 @@ FROM olympics_db.player
 ORDER BY height;
 ```
 
-## Tech Stack
+Both queries are exposed through dedicated Flask routes and rendered using HTML templates.
 
-| Technology | Purpose                   |
-| ---------- | ------------------------- |
-| Python     | Backend programming       |
-| Flask      | Web application framework |
-| PostgreSQL | Relational database       |
-| psycopg2   | PostgreSQL connectivity   |
-| HTML       | Frontend templates        |
-| Jinja2     | Dynamic HTML rendering    |
+## Application Routes
+
+| Route             | Description                       |
+| ----------------- | --------------------------------- |
+| `/`               | Homepage                          |
+| `/insert_sports`  | Add a sports record               |
+| `/show_sports`    | Display sports records            |
+| `/edit_sports`    | Edit a sports record              |
+| `/delete_sports`  | Delete a sports record            |
+| `/insert_player`  | Add a player                      |
+| `/show_player`    | Display player records            |
+| `/edit_player`    | Edit a player                     |
+| `/delete_player`  | Delete a player                   |
+| `/runquerysports` | Display sports records after 2000 |
+| `/runqueryplayer` | Display players ordered by height |
+
+The routes and their database operations are implemented in `main.py`.
 
 ## Project Structure
 
@@ -109,65 +137,11 @@ Olympics-Database-Managment-System/
 └── README.md
 ```
 
-## Database Structure
+The repository also currently contains development/environment directories such as `venv`, `.vscode`, and `node_modules`.
 
-The Flask application interacts with the following PostgreSQL tables:
+## Database
 
-### `player`
-
-| Column       | Description              |
-| ------------ | ------------------------ |
-| `player_id`  | Unique player identifier |
-| `first_name` | Player's first name      |
-| `last_name`  | Player's last name       |
-| `gender`     | Player's gender          |
-| `height`     | Player's height          |
-| `weight`     | Player's weight          |
-| `dob`        | Player's date of birth   |
-
-### `sports`
-
-| Column        | Description           |
-| ------------- | --------------------- |
-| `player_id`   | Player identifier     |
-| `sports_name` | Name of the sport     |
-| `location`    | Location of the event |
-| `year`        | Year of participation |
-
-The application accesses these tables using the PostgreSQL schema `olympics_db`.
-
-## Setup and Installation
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/hemangijoshi12/Olympics-Database-Managment-System.git
-cd Olympics-Database-Managment-System
-```
-
-### 2. Create a PostgreSQL database
-
-Create a PostgreSQL database named:
-
-```text
-olympics_db
-```
-
-Create the required schema and tables according to the fields used by the application.
-
-The current repository does not contain a SQL schema or database dump, so the PostgreSQL tables need to be created separately.
-
-### 3. Install Python dependencies
-
-Install Flask and PostgreSQL connectivity:
-
-```bash
-pip install flask psycopg2-binary
-```
-
-### 4. Configure the database connection
-
-The application currently uses the following connection configuration in `main.py`:
+The application connects to PostgreSQL using:
 
 ```python
 conn = psycopg2.connect(
@@ -178,97 +152,101 @@ conn = psycopg2.connect(
 )
 ```
 
-Update these values to match your local PostgreSQL configuration.
+The application expects the PostgreSQL schema `olympics_db` with the relevant `player` and `sports` tables.
 
-For production or shared environments, database credentials should be stored in environment variables rather than hard-coded in the source code.
+## Installation
 
-### 5. Run the application
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/hemangijoshi12/Olympics-Database-Managment-System.git
+cd Olympics-Database-Managment-System
+```
+
+### 2. Install Python dependencies
+
+```bash
+pip install flask psycopg2-binary
+```
+
+### 3. Configure PostgreSQL
+
+Create the required PostgreSQL database and tables expected by `main.py`.
+
+The application currently expects:
+
+```text
+Database: olympics_db
+Host: localhost
+User: postgres
+```
+
+Update the credentials in `main.py` to match your local PostgreSQL setup.
+
+### 4. Run the application
 
 ```bash
 python main.py
 ```
 
-The Flask development server will start locally.
-
-Open the application in your browser at:
+The Flask application runs in debug mode and can be accessed locally at:
 
 ```text
 http://127.0.0.1:5000/
 ```
 
-## Application Routes
-
-| Route             | Function                          |
-| ----------------- | --------------------------------- |
-| `/`               | Homepage                          |
-| `/insert_sports`  | Add sports record                 |
-| `/show_sports`    | Display sports records            |
-| `/edit_sports`    | Update sports record              |
-| `/delete_sports`  | Delete sports record              |
-| `/insert_player`  | Add player                        |
-| `/show_player`    | Display players                   |
-| `/edit_player`    | Update player                     |
-| `/delete_player`  | Delete player                     |
-| `/runquerysports` | Query sports after 2000           |
-| `/runqueryplayer` | Display players ordered by height |
-
-## CRUD Operations
-
-The system demonstrates the four fundamental database operations:
+## Architecture
 
 ```text
-Create  → Insert player/sports records
-Read    → Display stored records
-Update  → Edit existing records
-Delete  → Remove records
+           Web Browser
+                │
+                ▼
+        Flask Web Application
+                │
+                ▼
+          Flask Routes
+                │
+                ▼
+             Psycopg2
+                │
+                ▼
+          PostgreSQL
+          ┌─────┴─────┐
+          │           │
+       player       sports
+          │           │
+          └─────┬─────┘
+                │
+                ▼
+        Query / CRUD Results
+                │
+                ▼
+        HTML / Jinja Templates
 ```
 
-All database modifications are committed through PostgreSQL transactions using `psycopg2`.
-
-## How It Works
-
-The application follows a simple web application flow:
-
-```text
-User
- │
- ▼
-Flask Web Interface
- │
- ▼
-HTTP Request
- │
- ▼
-Flask Route
- │
- ▼
-SQL Query via psycopg2
- │
- ▼
-PostgreSQL Database
- │
- ▼
-Query Result
- │
- ▼
-Jinja2 HTML Template
- │
- ▼
-User
-```
-
-## Project Objectives
+## Key Learning Outcomes
 
 This project demonstrates practical implementation of:
 
-* Relational database management
-* PostgreSQL integration with Python
-* Flask web application development
+* Relational database design
+* SQL queries
+* PostgreSQL database integration
+* Flask backend development
 * CRUD operations
-* SQL querying
-* Database-backed HTML interfaces
-* Server-side form processing
+* HTML form handling
+* Server-side rendering with Jinja2
+* Connecting a web application to a relational database
 
-## Notes
+## Future Improvements
 
-The current application is configured for local development and uses `debug=True` when running Flask. Database credentials are also currently present directly in `main.py`. These settings should be changed before deploying the application to a production environment.
+Potential improvements include:
+
+* Moving database credentials to environment variables
+* Adding input validation and error handling
+* Using connection pooling
+* Adding authentication and authorization
+* Improving database schema constraints
+* Adding search and filtering functionality
+* Adding pagination for large datasets
+* Improving the frontend UI
+* Adding automated tests
