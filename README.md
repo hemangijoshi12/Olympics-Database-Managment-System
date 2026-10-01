@@ -4,7 +4,7 @@
 
 A web-based **Olympics Database Management System** built with **Python Flask** and **PostgreSQL**. The application provides a simple interface for managing Olympic player and sports information through CRUD operations and running predefined SQL queries.
 
-## 🚀 Overview
+## Overview
 
 This project demonstrates how a relational database can be integrated with a web application to store, retrieve, update, and delete Olympic-related data.
 
@@ -15,7 +15,7 @@ The application connects to a PostgreSQL database named `olympics_db` and provid
 * Database records through CRUD operations
 * Predefined SQL queries and sorted results
 
-## ✨ Features
+## Features
 
 ### Player Management
 
@@ -74,7 +74,7 @@ FROM olympics_db.player
 ORDER BY height;
 ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Technology | Purpose                   |
 | ---------- | ------------------------- |
@@ -225,7 +225,7 @@ Delete  → Remove records
 
 All database modifications are committed through PostgreSQL transactions using `psycopg2`.
 
-## 🧩 How It Works
+## How It Works
 
 The application follows a simple web application flow:
 
@@ -257,7 +257,7 @@ Jinja2 HTML Template
 User
 ```
 
-## 🎯 Project Objectives
+## Project Objectives
 
 This project demonstrates practical implementation of:
 
@@ -269,6 +269,6 @@ This project demonstrates practical implementation of:
 * Database-backed HTML interfaces
 * Server-side form processing
 
-## 🔐 Notes
+## Notes
 
 The current application is configured for local development and uses `debug=True` when running Flask. Database credentials are also currently present directly in `main.py`. These settings should be changed before deploying the application to a production environment.
